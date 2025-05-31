@@ -1,0 +1,54 @@
+{
+    "layer": "top",
+    "position": "top",
+    //"mode": "dock",
+    "exclusive": "true",
+    "passthrough": "false",
+    "height": "20",
+    "gtk-layer-shell": true,
+
+    //"modules-left": ["network", "custom/divider", "battery"],
+    "modules-left": ["network", "battery"],
+    "modules-center": ["custom/launcher"],
+    "modules-right": ["clock"],
+
+    "clock": {
+        "format": " {:%e %b, %I:%M %p }"
+    },
+
+    "custom/launcher": {
+        "tooltip" : false,
+        "format" : "󰣇"
+    },
+
+    "network": {
+        "interval": 100,
+        "format": " {ifname}",
+        "format-wifi": "   {essid}",
+        "format-ethernet": "   {ipaddr}/{cidr} ",
+        "format-disconnected": " ",
+        "tooltip-format": "   {ifname} via {gwaddr}",
+        "tooltip-format-wifi": "   {ifname} ({signalStrength}%)",
+        "tooltip-format-ethernet": "   {ifname}",
+        "tooltip-format-disconnected": " Disconnected",
+        "max-length": 50,
+        "exec": "kitty -e nmcli dev wifi "
+    },
+
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}  {capacity}% ",
+        "format-charging": " {capacity}% ",
+        "format-plugged": " {capacity}% ",
+        "format-alt": "{time} {icon} ",
+        "format-icons": ["", "", "", "", ""]
+    },
+    
+    "custom/divider": {
+        "format": "|"
+    }
+}
